@@ -18,9 +18,9 @@
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         @if (Auth::user()->level === 'admin')
-                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                            {{ __('Data User') }}
-                        </x-nav-link>
+                            <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                                {{ __('Data User') }}
+                            </x-nav-link>
                         @endif
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -33,15 +33,15 @@
                             {{ __('Data Produk') }}
                         </x-nav-link>
                     </div>
-                    @if (Auth::user()->level === 'petugas')                       
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('penjualan.index')" :active="request()->routeIs('penjualan.index')">
-                            {{ __('Data Penjualan') }}
-                        </x-nav-link>
-                    </div>
+                    @if (Auth::user()->level === 'petugas')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('penjualan.index')" :active="request()->routeIs('penjualan.index')">
+                                {{ __('Data Penjualan') }}
+                            </x-nav-link>
+                        </div>
                     @endif
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="url('/stok')" :active="request()->routeIs('produk.show')">
+                        <x-nav-link :href="route('stok.index')" :active="request()->routeIs('stok.index')">
                             {{ __('Stok Produk') }}
                         </x-nav-link>
                     </div>
@@ -103,67 +103,67 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    @if (Auth::check())      
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-        @if (Auth::user()->level === 'admin')           
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                {{ __('Data User') }}
-            </x-responsive-nav-link>
-        </div>
-        @endif
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="route('pelanggan.index')" :active="request()->routeIs('pelanggan.index')">
-                {{ __('Data Pelanggan') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="route('produk.index')" :active="request()->routeIs('produk.index')">
-                {{ __('Data Produk') }}
-            </x-responsive-nav-link>
-        </div>
-        @if (Auth::user()->level === 'petugas')    
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="route('penjualan.index')" :active="request()->routeIs('penjualan.index')">
-                {{ __('Data Penjualan') }}
-            </x-responsive-nav-link>
-        </div>
-        @endif
-        <div class="space-y-1 pb-3 pt-2">
-            <x-responsive-nav-link :href="url('/stok')" :active="request()->routeIs('produk.stok')">
-                {{ __('Stok Produk') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
-            <div class="px-4">
-                <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+    @if (Auth::check())
+        <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+            <div class="space-y-1 pb-3 pt-2">
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
+            </div>
+            @if (Auth::user()->level === 'admin')
+                <div class="space-y-1 pb-3 pt-2">
+                    <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                        {{ __('Data User') }}
                     </x-responsive-nav-link>
-                </form>
+                </div>
+            @endif
+            <div class="space-y-1 pb-3 pt-2">
+                <x-responsive-nav-link :href="route('pelanggan.index')" :active="request()->routeIs('pelanggan.index')">
+                    {{ __('Data Pelanggan') }}
+                </x-responsive-nav-link>
+            </div>
+            <div class="space-y-1 pb-3 pt-2">
+                <x-responsive-nav-link :href="route('produk.index')" :active="request()->routeIs('produk.index')">
+                    {{ __('Data Produk') }}
+                </x-responsive-nav-link>
+            </div>
+            @if (Auth::user()->level === 'petugas')
+                <div class="space-y-1 pb-3 pt-2">
+                    <x-responsive-nav-link :href="route('penjualan.index')" :active="request()->routeIs('penjualan.index')">
+                        {{ __('Data Penjualan') }}
+                    </x-responsive-nav-link>
+                </div>
+            @endif
+            <div class="space-y-1 pb-3 pt-2">
+                <x-responsive-nav-link :href="route('stok.index')" :active="request()->routeIs('stok.index')">
+                    {{ __('Stok Produk') }}
+                </x-responsive-nav-link>
+            </div>
+
+            <!-- Responsive Settings Options -->
+            <div class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
+                <div class="px-4">
+                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
+
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     @endif
 </nav>
